@@ -1,0 +1,111 @@
+<div fxLayout="column">
+
+
+    <div class="absolute-center" style="height: 270px; background: black;">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <div style="color: white;font-size: 110px; font-weight: 900;">MindBowser</div>
+            <div style="color: white;font-weight: 600;font-size: 30px;">Solutions</div>
+        </div>
+
+    </div>
+
+
+    <!-- <mat-card class="mainform"  fxFlex="100" fxFlex.xs="100"> -->
+
+
+
+    <div class="mainform" fxFlex="100" fxFlex.xs="100" fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <div>
+                <h1>SignIn</h1>
+                <h5>To start using app</h5>
+            </div>
+        </div>
+        <div fxFlex=100 fxFlex.xs=100 >
+
+
+            <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="login(loginForm.value)"
+                style="width: 100%; padding-top: 10px;">
+                <div class="box">
+                    <mat-card-content fxFlex="100" fxLayout="column">
+                        <div>
+                            <mat-card-subtitle>Create your Fundoo Account</mat-card-subtitle>
+                        </div>
+
+                        <div fxLayout="column" fxFlex=100>
+                            <div fxFlex=90>
+                                <mat-form-field appearance="outline" fxFlex=100 fxFlex.xs="100">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput type="text" placeholder="Email" formControlName="email" id="email">
+                                    <mat-error *ngIf="loginForm.hasError('required', 'email')">email is required
+                                    </mat-error>
+                                    <mat-hint>You can use letters,Numbers</mat-hint>
+                                    <mat-icon matSuffix>email</mat-icon>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex=90>
+                                <mat-form-field appearance="outline" fxFlex=100 fxFlex.xs="100">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput type="text" placeholder="Password" formControlName="password"
+                                        [type]="hide ? 'password' : 'text'">
+                                    <div matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                        [attr.aria-pressed]="hide" class="i">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </div>
+
+                                    <mat-error *ngIf="loginForm.hasError('required', 'password')">password is
+                                        required</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <div fxLayoutAlign="space-between center" >
+                            <a class="signIn" routerLink="/signup">Signup in instead</a>
+                            <button mat-raised-button color="primary" [disabled]="!loginForm.valid">login</button>
+                        </div>
+                    </mat-card-content>
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+    <!-- </mat-card> -->
+</div>
+
+
+<!-- <div fxLayoutAlign="center center" >
+    <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="loginUser(loginForm.value)">
+        <div  >
+
+
+            <div fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayout.xs="column">
+                <div>
+                    <mat-form-field [style.fontSize.px]="12" appearance="outline" fxFlex="100" fxFlex.xs="100">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" placeholder="Email" formControlName="email" id="email">
+                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-error *ngIf="hasError('email', 'required')">email is required</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field [style.fontSize.px]="12" appearance="outline" fxFlex="100" fxFlex.xs="100">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="text" placeholder="Password" formControlName="password" id="password"
+                            [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div> -->

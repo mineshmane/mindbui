@@ -1,0 +1,49 @@
+
+<button mat-raised-button class="yes-button" (click)="update(null)" >
+    addEmployee
+</button>
+
+<div class="table-div">
+
+    <table class="display" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr class="sub-heading">
+              
+                <th class="countHead background-head">Sr. No.</th>
+                <th class="phnNum-head background-head">EmpId</th>
+                <th class="Name-head background-head">First Name</th>
+                <th class="Name-head background-head">Last Name</th>
+                <th class="email-haed background-head">Email</th>
+                <th class="phnNum-head background-head">Phone Number</th>
+                <th class="Type-head background-head">Dob</th>
+                <th class="categiry-head background-head">city</th>
+                <th class="categiry-head background-head">Action</th>
+
+            </tr>
+
+            <tr class="main-data" *ngFor="let item of EmployeeArray">
+              
+                <td class="countdata">{{item.empId}}</td>
+                <td class=" phnNum-data">{{item.empId}}
+                </td>
+                <td class="mentorName-data">{{item?.firstName |titlecase}}</td>
+                <td class="mentorName-data">{{item?.lastName |titlecase}}</td>
+
+                <td class="email-data">{{item?.email}}</td>
+                <td class="phnNum-data">{{item?.phone}}</td>
+                <td class="mentorType-data">{{item?.dob|date:Medium}}</td>
+                <td class="categiry-data">{{item?.city}}</td>
+                <td class="techStack-data"><div (click)="update(item)" >edit</div>
+                <div (click)='delete(item)'>
+                    delete
+                </div>
+                </td>
+
+
+
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>

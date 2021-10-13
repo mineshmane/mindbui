@@ -1,0 +1,141 @@
+<div class="main" fxLayoutAlign="center center" fxFlex="100" fxFlexOffset.xs="0" fxFlex.xs="100">
+    <mat-card fxFlex.xs="100">
+        <div>
+
+            <div>
+                <mat-card-title>
+                    <p>
+                        <span class="f">M</span>
+                        <span class="u">I</span>
+                        <span class="n">N</span>
+                        <span class="d">D</span>
+                        <span class="o">B</span>
+                        <span class="n">O</span>
+                        <span class="f">W</span>
+
+                        <span class="u">S</span>
+
+                        <span class="n">E</span>
+                        <span class="d">R</span>
+                    </p>
+                </mat-card-title>
+            </div>
+
+            <form [formGroup]="employeeDetails" autocomplete="off" novalidate
+                (ngSubmit)="addEmployee(employeeDetails.value)">
+                <div>
+                    <mat-card-content>
+                        <div>
+                            <mat-card-subtitle *ngIf="data==null">Add Employee</mat-card-subtitle>
+                            <mat-card-subtitle *ngIf="data!=null">Update Employee</mat-card-subtitle>
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutWrap fxLayoutGap="10px" fxLayout.xs="column">
+
+                            <div>
+                                <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
+                                    <mat-label>EmployeeId</mat-label>
+                                    <input matInput type="number" placeholder="EmployeeId" formControlName="empId"
+                                       >
+                                    <mat-error *ngIf="employeeDetails.hasError('required', 'empId')">Name is required
+                                    </mat-error>
+                                   
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
+                                    <mat-label>First Name</mat-label>
+                                    <input matInput type="text" placeholder="firstName" formControlName="firstName"
+                                        id="fisrtName">
+                                    <mat-error *ngIf="employeeDetails.hasError('required', 'firstName')">Name is required
+                                    </mat-error>
+                                   
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline" fxFlex.xs="100">
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput type="text" placeholder="LastName" formControlName="lastName"
+                                        id="lastName">
+                                    <mat-error *ngIf="employeeDetails.hasError('required', 'lastName')">Name is required
+                                    </mat-error>
+                                   
+                                </mat-form-field>
+                            </div>
+                          
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="outline" fxFlex="91" fxFlex.xs="100">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="text" placeholder="Email" class="email" formControlName="email"
+                                    id="email">
+                                <mat-error *ngIf="employeeDetails.hasError('required', 'email')">email is required
+                                </mat-error>
+                            
+                                <mat-icon matSuffix>email</mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                              
+                                <div fxLayout="row" fxLayoutWrap fxLayoutGap="10px" fxLayout.xs="column">
+                                    <div>
+                                        <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
+                                            <input matInput [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                            <mat-error *ngIf="employeeDetails.hasError('required', 'dob')">Date of birth is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+                                        <mat-form-field appearance="outline" fxFlex.xs="100">
+                                            <mat-label>phone</mat-label>
+                                            <input matInput type="text" placeholder="phone"
+                                                formControlName="phone" >
+                                            <mat-error *ngIf="employeeDetails.hasError('required', 'phone')">company Name is
+                                                required
+                                            </mat-error>
+                                       
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="outline" fxFlex.xs="100">
+                                            <mat-label>city</mat-label>
+                                            <input matInput type="text" placeholder="city"
+                                                formControlName="city" >
+                                            <mat-error *ngIf="employeeDetails.hasError('required', 'city')">Address is
+                                                required
+                                            </mat-error>
+                                            
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between">
+                            <div fxLayoutAlign="space-between center" >
+                                <button mat-raised-button class="yes-button" (click)="onClose()">cancel</button>
+                            </div>
+    
+                            <div fxLayoutAlign="space-between center" *ngIf="data==null">
+                                <button mat-raised-button class="yes-button"  [disabled]="!employeeDetails.valid">add</button>
+                            </div>
+                            <div fxLayoutAlign="space-between center" *ngIf="data!=null">
+                                <button mat-raised-button class="yes-button"  [disabled]="!employeeDetails.valid">update</button>
+                            </div>
+                        </div>
+                       
+                    </mat-card-content>
+                </div>
+
+            </form>
+        </div>
+
+
+    </mat-card>
+</div>

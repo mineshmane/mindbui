@@ -1,0 +1,12 @@
+
+<mat-tab-group>
+    <mat-tab label="ManageEmployee"> 
+<app-displayemp [EmployeeArray]='EmployeeList' (refreshEvent)="dataRecieved($event)"></app-displayemp>
+        
+    </mat-tab>
+ 
+    <mat-tab label="Manage Subscription">
+         <app-payment ></app-payment>
+    </mat-tab>
+  </mat-tab-group>
+

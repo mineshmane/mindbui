@@ -1,0 +1,53 @@
+
+
+  .mainform{
+    // border-top-left-radius: 13%;
+    border-top-left-radius: 3.5em 3.5em;
+
+    position: relative;
+     margin-top: -56px;
+     background: #FFFFFF;
+  }
+  .absolute-center {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+
+    align-items: center;
+    justify-content: center;
+}
+.box{
+  top: 103px;
+left: 456px;
+width: 582px;
+// height: 564px;
+opacity: 1;
+font-size: small;
+}
+
+
+
+
+
+
+a {
+  text-decoration: none;
+}
+
+
+.signIn{
+  color: #4586ee;
+  font-weight: bold;
+  cursor: pointer;
+  // margin-top: 20%;
+}
+
+
+
+
+
+
