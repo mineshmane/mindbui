@@ -45,7 +45,7 @@
                                 <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
                                     <mat-label>Last Name</mat-label>
                                     <input matInput type="text" placeholder="LastName" formControlName="lastName"
-                                        id="lastName">
+                                        >
                                     <mat-error *ngIf="registerForm.hasError('required', 'lastName')">Name is required
                                     </mat-error>
 
@@ -56,7 +56,7 @@
                         <div>
                             <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
                                 <mat-label>Email</mat-label>
-                                <input matInput type="text" placeholder="Email" formControlName="email">
+                                <input matInput type="text" placeholder="Enter Email" formControlName="email">
                                 <mat-error *ngIf="registerForm.hasError('required', 'email')">email is required
                                 </mat-error>
 
@@ -84,7 +84,7 @@
 
                                 <div fxFlex="100">
                                     <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
-                                        <input matInput [matDatepicker]="picker" placeholder="Date of Birth"
+                                        <input matInput [matDatepicker]="picker"  [max]="maxDate" placeholder="Date of Birth"
                                             formControlName="dob">
                                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                         <mat-datepicker #picker></mat-datepicker>
@@ -101,8 +101,8 @@
                                 <div fxFlex="100" fxFlex.xs=100>
                                     <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
                                         <mat-label>compnay</mat-label>
-                                        <input matInput type="text" placeholder="LastName" formControlName="company"
-                                            id="lastName">
+                                        <input matInput type="text" placeholder="Enter Compnay Name" formControlName="company"
+                                            >
                                         <mat-error *ngIf="registerForm.hasError('required', 'company')">company Name
                                             is
                                             required
@@ -113,8 +113,8 @@
                                 <div fxFlex="100">
                                     <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
                                         <mat-label>address</mat-label>
-                                        <input matInput type="text" placeholder="LastName" formControlName="address"
-                                            id="lastName">
+                                        <input matInput type="text" placeholder="Enter Address" formControlName="address"
+                                            >
                                         <mat-error *ngIf="registerForm.hasError('required', 'address')">Address is
                                             required
                                         </mat-error>
@@ -123,16 +123,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
                         <div fxLayoutAlign="space-between center">
                             <a class="signIn" routerLink="/login">login in instead</a>
                             <button mat-raised-button color="primary" [disabled]="!registerForm.valid">REGISTER</button>

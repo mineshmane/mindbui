@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { ManagerService } from '../../services/managerService/manager.service'
+import { ManagerService } from '../../services/managerService/manager.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -9,7 +11,9 @@ import { ManagerService } from '../../services/managerService/manager.service'
 })
 export class UpdateComponent implements OnInit {
   employeeDetails: FormGroup
-  constructor(private formBuilder: FormBuilder, private service: ManagerService,
+  maxDate = new Date();
+
+  constructor(private formBuilder: FormBuilder, private service: ManagerService,private snackbar:MatSnackBar,
     public dialogRef: MatDialogRef<UpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     console.log(data);
@@ -81,6 +85,9 @@ export class UpdateComponent implements OnInit {
       console.log(reqPayload);
       this.service.updateEmployee(reqPayload).subscribe((res: any) => {
         console.log(res);
+        this.snackbar.open("Employee updated successfully", ";", {
+          duration: 2000,
+        });
         this.dialogRef.close();
 
       }, err => {
@@ -101,10 +108,16 @@ export class UpdateComponent implements OnInit {
 
       this.service.addEmployee(reqPayload).subscribe((response: any) => {
         console.log(response);
+        this.snackbar.open("Employee updated successfully", "", {
+          duration: 2000,
+        });
         this.dialogRef.close(response);
 
       }, err => {
         console.log(err);
+        this.snackbar.open("failed", "", {
+          duration: 2000,
+        });
 
       })
 

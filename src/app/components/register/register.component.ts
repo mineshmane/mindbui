@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import {  Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ManagerService } from '../../services/managerService/manager.service'
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,9 +10,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private router: Router, private service: ManagerService,
-    private snackBar: MatSnackBar) {
+  minDate = new Date(1970, 0, 1);
+  maxDate = new Date();
+  constructor(private formBuilder: FormBuilder, private router: Router, private service: ManagerService,private snackbar:MatSnackBar) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]],
@@ -41,10 +41,15 @@ export class RegisterComponent implements OnInit {
     } else {
       this.service.registration(this.registerForm.value).subscribe((res) => {
         console.log(res);
-
+        this.snackbar.open("Registration  sucessfully", "", {
+          duration: 2000,
+        });
+        this.router.navigateByUrl('login')
       },err =>{
         console.log(err);
-        
+        this.snackbar.open("Registration  failed", "", {
+          duration: 2000,
+        });
       })
     }
 

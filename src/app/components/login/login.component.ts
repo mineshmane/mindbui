@@ -33,11 +33,16 @@ export class LoginComponent implements OnInit {
       this.service.login(this.loginForm.value).subscribe((res:any) => {
         console.log(res);
         localStorage.setItem('token',res.token)
-
+        this.snackBar.open("login   success ", "", {
+          duration: 2000,
+        });
         this.router.navigateByUrl('/dashboard')
 
       }, err => {
         console.log(err);
+        this.snackBar.open("login failed", "", {
+          duration: 2000,
+        });
 
       })
 
